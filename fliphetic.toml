@@ -1,0 +1,24 @@
+[app]
+id          = "cuphead-pinball"
+name        = "Cuphead Pinball"
+authors     = ["arthurguill"]
+
+[deploy]
+strategy = "branch"
+ref      = "main"
+
+[screens]
+playfield = { service = "playfield", port = 80 }
+backglass = { service = "backglass", port = 80 }
+dmd       = { service = "dmd", port = 80 }
+
+[compose]
+file = "deploy/docker-compose.yml"
+ready_timeout = 30
+
+[esp32.esp32]
+firmware   = "firmware/build/firmware.bin"
+chip       = "esp32"
+flash_addr = "0x0"
+baud       = 115200
+required   = false

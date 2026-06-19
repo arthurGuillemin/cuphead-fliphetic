@@ -1,0 +1,30 @@
+services:
+  playfield:
+    image: arthurguill/pinball-playfield:latest
+    pull_policy: always
+    ports: ["0:80"]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+
+  backglass:
+    image: arthurguill/pinball-backglass:latest
+    pull_policy: always
+    ports: ["0:80"]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+
+  dmd:
+    image: arthurguill/pinball-dmd:latest
+    pull_policy: always
+    ports: ["0:80"]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
